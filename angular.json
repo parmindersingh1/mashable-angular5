@@ -29,11 +29,9 @@
               "src/assets/icon/icofont/css/icofont.css",
               "node_modules/font-awesome-scss/scss/font-awesome.scss",
               "node_modules/sweetalert2/dist/sweetalert2.min.css",
-              "node_modules/ng2-toasty/style-bootstrap.css",
-              "node_modules/ng2-toasty/style-default.css",
-              "node_modules/ng2-toasty/style-material.css",
               "node_modules/froala-editor/css/froala_editor.pkgd.min.css",
               "node_modules/froala-editor/css/froala_style.min.css",
+              "node_modules/ngx-toastr/toastr.css",
               "src/assets/css/animate.scss",
               "src/styles.scss",
               "src/assets/css/custom.scss"

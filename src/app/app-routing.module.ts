@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path: '',
     component: AdminComponent,
-    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       {
         path: '',
@@ -24,9 +24,6 @@ const routes: Routes = [
       }, {
         path: 'basic',
         loadChildren: './pages/components/basic/basic.module#BasicModule'
-      }, {
-        path: 'advance',
-        loadChildren: './pages/components/advance/advance.module#AdvanceModule'
       }, {
         path: 'forms',
         loadChildren: './pages/components/forms/forms.module#FormsModule'

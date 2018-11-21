@@ -1,3 +1,5 @@
+import { LoggerService } from './../_services/logger.service';
+import { AuthGuard } from './../_guards/auth.guard';
 import { NgModule } from '@angular/core';
 import {CommonModule} from '@angular/common';
 
@@ -16,7 +18,6 @@ import {ParentRemoveDirective} from './elements/parent-remove.directive';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ModalAnimationComponent} from './modal-animation/modal-animation.component';
 import {ModalBasicComponent} from './modal-basic/modal-basic.component';
-import {ToastyModule} from 'ng2-toasty';
 import {SimpleNotificationsModule} from 'angular2-notifications';
 import {TagInputModule} from 'ngx-chips';
 import {AnimatorModule} from 'css-animator';
@@ -26,6 +27,7 @@ import {SelectModule} from 'ng-select';
 import {SelectOptionService} from './elements/select-option.service';
 import {FormWizardModule} from 'angular2-wizard';
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import { ToastrModule } from 'ngx-toastr';
 
 import {DataFilterPipe} from './elements/data-filter.pipe';
 import {DataTableModule} from 'angular2-datatable';
@@ -57,7 +59,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       ReactiveFormsModule,
       NgbModule.forRoot(),
       // SqueezeBoxModule,
-      ToastyModule.forRoot(),
       SimpleNotificationsModule.forRoot(),
       TagInputModule,
       UiSwitchModule,
@@ -80,7 +81,13 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       NvD3Module,
       ClickOutsideModule,
       PerfectScrollbarModule,
-      ChartistModule
+      ChartistModule,
+      ToastrModule.forRoot({
+        timeOut: 10000,
+        closeButton: true,
+        positionClass: 'toast-bottom-right',
+        preventDuplicates: true,
+      })
   ],
   declarations: [
       AccordionAnchorDirective,
@@ -112,7 +119,6 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       ReactiveFormsModule,
       ModalBasicComponent,
       ModalAnimationComponent,
-      ToastyModule,
       SimpleNotificationsModule,
       TagInputModule,
       UiSwitchModule,
@@ -136,7 +142,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
       NvD3Module,
       ClickOutsideModule,
       PerfectScrollbarModule,
-      ChartistModule
+      ChartistModule,
+      ToastrModule
   ],
   providers: [
       MenuItems,
@@ -146,7 +153,9 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     {
       provide: PERFECT_SCROLLBAR_CONFIG,
       useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG
-    }
+    },
+    AuthGuard,
+    LoggerService
   ]
 })
 export class SharedModule { }
