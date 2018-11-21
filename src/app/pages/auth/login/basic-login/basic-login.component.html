@@ -3,9 +3,10 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="login-card card-body auth-body">
-          <form class="md-float-material">
+          <form class="md-float-material" (ngSubmit)="f.form.valid && signin()" #f="ngForm" action="">
             <div class="text-center">
-              <img src="assets/images/auth/logo.png" alt="logo.png">
+              <!-- <img src="assets/images/auth/logo.png" alt="logo.png"> -->
+              <h1>Indusuno</h1>
             </div>
             <div class="auth-box">
               <div class="row m-b-20">
@@ -14,19 +15,31 @@
                 </div>
               </div>
               <hr/>
-              <div class="input-group">
-                <input type="email" class="form-control" placeholder="Your Email Address">
+              <div class="form-group" [ngClass]="{ 'was-validated has-danger': !email.valid && (email.dirty || email.touched || f.submitted ) }"  >
+                <input type="email" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && email.invalid }"
+                  name="email" [(ngModel)]="model.email" #email="ngModel" 
+                  placeholder="Your Email Address" required>
                 <span class="md-line"></span>
+                <div *ngIf="email.invalid && (email.dirty || email.touched || f.submitted)" class="col-form-label">
+                  <div *ngIf="email?.errors.required">Email is required</div>
+                  <div *ngIf="email?.errors.email">Email must be a valid email address</div>
+                </div>
               </div>
-              <div class="input-group">
-                <input type="password" class="form-control" placeholder="Password">
+              <div class="form-group" [ngClass]="{ 'was-validated has-danger': !password.valid && (password.dirty || password.touched || f.submitted) }">
+                <input type="password" class="form-control" [ngClass]="{ 'is-invalid': f.submitted && password.invalid }"
+                  placeholder="Password" name="password" [(ngModel)]="model.password" 
+                  #password="ngModel" required>
                 <span class="md-line"></span>
+                <div *ngIf="password.invalid && (password.dirty || password.touched || f.submitted)" class="col-form-label">
+                  <div *ngIf="password?.errors.required">Password is required</div>
+                  <div *ngIf="password?.errors.minlength">Password must be at least 6 characters</div>
+                </div>
               </div>
               <div class="row m-t-25 text-left">
                 <div class="col-sm-7 col-xs-12">
                   <div class="checkbox-fade fade-in-primary">
                     <label>
-                      <input type="checkbox" value="">
+                      <input type="checkbox" name="remember" [(ngModel)]="model.remember" #remember="ngModel">
                       <span class="cr"><i class="cr-icon icofont icofont-ui-check txt-primary"></i></span>
                       <span class="text-inverse">Remember me</span>
                     </label>
@@ -36,9 +49,10 @@
                   <a [routerLink]="['/auth/forgot']" class="text-right f-w-600 text-inverse"> Forgot Your Password?</a>
                 </div>
               </div>
+              ---{{f.form.valid}} 8888{{email.invalid}}99999{{password.invalid}}0000{{(password.dirty || password.touched || f.submitted)}}
               <div class="row m-t-30">
                 <div class="col-md-12">
-                  <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign in</button>
+                  <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Sign in</button>
                 </div>
               </div>
               <hr/>
