@@ -16,6 +16,15 @@ const routes: Routes = [
       {
         path: 'registration',
         loadChildren: './registration/basic-reg/basic-reg.module#BasicRegModule'
+      },
+      {
+        path: 'forgot-password',
+        loadChildren: './forgot-password/forgot-password.module#ForgotPasswordModule'
+      },
+      {
+        path: '',
+        redirectTo:  '/auth/login',
+        pathMatch: 'full',
       }
     ]
   }

@@ -1,7 +1,9 @@
+import { AuthService } from './../../pages/auth/_services/auth.service';
 import {Component, ElementRef, OnInit, ViewChild, ViewEncapsulation} from '@angular/core';
 import {state, style, transition, animate, trigger, AUTO_STYLE} from '@angular/animations';
 import 'rxjs/add/operator/filter';
 import {MenuItems} from '../../shared/menu-items/menu-items';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-admin',
@@ -44,7 +46,7 @@ export class AdminComponent implements OnInit {
 
   config: any;
 
-  constructor(public menuItems: MenuItems) {
+  constructor(public menuItems: MenuItems, private _auth: AuthService, private _router: Router) {
     const scrollHeight = window.screen.height - 150;
     this.innerHeight = scrollHeight + 'px';
     this.windowWidth = window.innerWidth;
@@ -106,6 +108,12 @@ export class AdminComponent implements OnInit {
 
   onScroll(event) {
     this.isScrolled = false;
+  }
+
+  onLogout() {
+    console.log("onLogout");
+    this._auth.onLogout();
+    this._router.navigate(['/auth','login']);   
   }
 
 }
