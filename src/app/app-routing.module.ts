@@ -15,28 +15,28 @@ const routes: Routes = [
       },
       {
         path: 'dashboard',
-        loadChildren: './dashboard/dashboard.module#DashboardModule'
+        loadChildren: './pages/dashboard/dashboard.module#DashboardModule'
       }, {
         path: 'widget',
-        loadChildren: './widget/widget.module#WidgetModule'
+        loadChildren: './pages/widget/widget.module#WidgetModule'
       }, {
         path: 'basic',
-        loadChildren: './components/basic/basic.module#BasicModule'
+        loadChildren: './pages/components/basic/basic.module#BasicModule'
       }, {
         path: 'advance',
-        loadChildren: './components/advance/advance.module#AdvanceModule'
+        loadChildren: './pages/components/advance/advance.module#AdvanceModule'
       }, {
         path: 'forms',
-        loadChildren: './components/forms/forms.module#FormsModule'
+        loadChildren: './pages/components/forms/forms.module#FormsModule'
       }, {
         path: 'bootstrap-table',
-        loadChildren: './components/tables/bootstrap-table/bootstrap-table.module#BootstrapTableModule',
+        loadChildren: './pages/components/tables/bootstrap-table/bootstrap-table.module#BootstrapTableModule',
       }, {
         path: 'charts',
-        loadChildren: './charts/charts.module#ChartsModule',
+        loadChildren: './pages/charts/charts.module#ChartsModule',
       }, {
         path: 'simple-page',
-        loadChildren: './simple-page/simple-page.module#SimplePageModule'
+        loadChildren: './pages/simple-page/simple-page.module#SimplePageModule'
       }
     ]
   },
@@ -46,7 +46,7 @@ const routes: Routes = [
     children: [
       {
         path: 'auth',
-        loadChildren: './auth/auth.module#AuthModule'
+        loadChildren: './pages/auth/auth.module#AuthModule'
       }
     ]
   },
