@@ -9,12 +9,7 @@ const routes: Routes = [
     path: '',
     component: AdminComponent,
     canActivateChild: [AuthGuard],
-    children: [
-      {
-        path: '',
-        redirectTo: 'dashboard',
-        pathMatch: 'full'
-      },
+    children: [      
       {
         path: 'dashboard',
         loadChildren: './pages/dashboard/dashboard.module#DashboardModule'
@@ -36,6 +31,13 @@ const routes: Routes = [
       }, {
         path: 'simple-page',
         loadChildren: './pages/simple-page/simple-page.module#SimplePageModule'
+      }, {
+        path: 'profile',
+        loadChildren: './pages/profile/profile.module#ProfileModule'
+      },{
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
       }
     ]
   },
