@@ -1,3 +1,4 @@
+import { fadeInOutTranslate } from './../../shared/elements/animation';
 import { style } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 
@@ -5,11 +6,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  styles:[`
-    .nav-tabs {
-      background-color: #fff;
-    }
-  `]
+  animations: [fadeInOutTranslate]
 })
 export class ProfileComponent implements OnInit {
 
